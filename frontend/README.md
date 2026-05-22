@@ -1,16 +1,208 @@
-# React + Vite
+# AI Resume Analyzer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An AI-powered web application that analyzes a resume against a job description and provides ATS-style insights.
 
-Currently, two official plugins are available:
+Upload a resume PDF, paste a job description, and receive:
+- ATS compatibility score
+- Missing skills
+- Resume strengths
+- Improvement suggestions
+- Interview probability
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Built with React, FastAPI, Groq API, and PDF text extraction.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Preview
 
-## Expanding the ESLint configuration
+Analyze resumes in seconds with:
+- Resume upload
+- Job description matching
+- AI-generated recommendations
+- Modern dashboard UI
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Features
+
+- Resume PDF upload
+- Job description input
+- ATS score generation
+- Missing skills detection
+- Resume strengths analysis
+- Resume improvement recommendations
+- Interview probability estimation
+- Responsive frontend dashboard
+
+---
+
+## Tech Stack
+
+### Frontend
+- React
+- Vite
+- CSS
+- Axios
+
+### Backend
+- FastAPI
+- Python
+- PyPDF
+
+### AI Integration
+- Groq API
+- Llama model
+
+---
+
+## Project Structure
+
+```plaintext
+AI-Resume-Analyzer/
+
+├── backend/
+│   ├── main.py
+│   ├── .env
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   └── main.jsx
+│   │
+│   ├── package.json
+│   └── vite.config.js
+│
+├── .gitignore
+└── README.md
+```
+
+---
+
+## Installation
+
+### Clone Repository
+
+```bash
+git clone https://github.com/rithika88/AI-Resume-Analyzer.git
+```
+
+```bash
+cd AI-Resume-Analyzer
+```
+
+---
+
+## Backend Setup
+
+Open terminal:
+
+```bash
+cd backend
+```
+
+Install dependencies:
+
+```bash
+pip install fastapi uvicorn python-multipart pypdf requests python-dotenv
+```
+
+Create `.env`
+
+```env
+GROQ_API_KEY=your_groq_api_key
+```
+
+Run backend:
+
+```bash
+python -m uvicorn main:app --reload
+```
+
+Backend:
+
+```plaintext
+http://127.0.0.1:8000
+```
+
+---
+
+## Frontend Setup
+
+Open another terminal:
+
+```bash
+cd frontend
+```
+
+Install packages:
+
+```bash
+npm install
+```
+
+Start frontend:
+
+```bash
+npm run dev
+```
+
+Frontend:
+
+```plaintext
+http://localhost:5173
+```
+
+---
+
+## Usage
+
+1. Upload resume PDF
+2. Paste job description
+3. Click **Analyze Resume**
+4. View:
+   - ATS Score
+   - Missing Skills
+   - Strengths
+   - Resume Improvements
+   - Interview Probability
+
+---
+
+## Example Output
+
+```plaintext
+ATS Score → 80/100
+
+Missing Skills
+- Cloud Platforms
+- Docker
+
+Strengths
+- React
+- Python
+- Databricks
+
+Interview Probability
+- High
+```
+
+---
+
+## Future Improvements
+
+- Resume history
+- Export analysis
+- Authentication
+- Multiple resume support
+- Deployment
+
+---
+
+## Author
+
+Rithika
+
+GitHub:
+https://github.com/rithika88
