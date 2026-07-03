@@ -2,6 +2,8 @@ import { useState, useRef } from "react";
 import axios from "axios";
 import "./App.css";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+
 function ScoreRing({ score }) {
   const radius = 54;
   const circumference = 2 * Math.PI * radius;
@@ -69,17 +71,25 @@ export default function App() {
 
   const handleAnalyze = async () => {
     if (!file) { alert("Please upload a resume"); return; }
+    if (!jobDescription.trim()) { alert("Please paste a job description"); return; }
+
     setLoading(true);
     setResult(null);
     try {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("job_description", jobDescription);
-      const res = await axios.post("http://127.0.0.1:8000/analyze", formData);
+      const res = await axios.post(`${API_URL}/analyze`, formData);
+
+      if (res.data.error) {
+        alert(res.data.error);
+        return;
+      }
+
       setResult(res.data);
     } catch (error) {
-      console.log(error);
-      alert("Analysis failed. Please try again.");
+      console.error(error);
+      alert(error.response?.data?.error || "Analysis failed. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -265,7 +275,6 @@ export default function App() {
         </main>
       )}
 
-   
     </div>
   );
 }
